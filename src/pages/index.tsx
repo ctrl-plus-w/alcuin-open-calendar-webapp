@@ -52,7 +52,7 @@ export default function Home() {
         <p className="mb-6">Par <strong>Alex Fougeroux</strong> et <strong>Lukas Laudrain</strong>.</p>
 
         <Combobox values={dropdownValues} {...{currentValue, setCurrentValue}} />
-        <Button disabled={currentValue === ''} onClick={onClick}>Copy !</Button>
+        <Button className="w-[350px]" disabled={currentValue === ''} onClick={onClick}>Copy !</Button>
       </div>
     </main>
   )
