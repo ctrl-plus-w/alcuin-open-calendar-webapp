@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
 import CALENDARS, { BASEPATH } from '@/constants/CALENDARS'
+import Head from 'next/head';
 
 const prettifyCalendarName = (name: string) => {
   if(!name.startsWith('23_24')) return name.slice(0, name.length - 4).replaceAll('_', ' ');
@@ -42,6 +43,10 @@ export default function Home() {
 
   return (
     <main className='h-screen flex items-center justify-center'>
+      <Head>
+        <title>Alcuin Scrapper</title>
+      </Head>
+
       <div className="flex flex-col gap-4">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Calendrier Alcuin</h1>
         <p className="mb-6">Par <strong>Alex Fougeroux</strong> et <strong>Lukas Laudrain</strong>.</p>
