@@ -18,6 +18,8 @@ import {
  
  
 interface IProps {
+  placeholder?: string;
+
   currentValue: string;
   setCurrentValue: React.Dispatch<React.SetStateAction<string>>;
   
@@ -27,7 +29,7 @@ interface IProps {
   }[];
 }
  
-export default function Combobox({ currentValue, setCurrentValue, values}: IProps) {
+export default function Combobox({ placeholder, currentValue, setCurrentValue, values}: IProps) {
   const [open, setOpen] = React.useState(false)
 
   return (
@@ -37,18 +39,18 @@ export default function Combobox({ currentValue, setCurrentValue, values}: IProp
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[350px] justify-between"
+          className="w-full justify-between"
         >
           {currentValue
             ? values.find(({ value }) => value === currentValue)?.label
-            : "Select value..."}
+            : placeholder ?? 'Select a value...' }
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[350px] p-0">
+      <PopoverContent className="w-full p-0">
         <Command>
           <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandEmpty>Aucune promotion trouvée.</CommandEmpty>
           <CommandGroup>
             {values.map((value) => (
               <CommandItem

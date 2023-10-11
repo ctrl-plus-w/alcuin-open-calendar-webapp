@@ -42,7 +42,7 @@ export default function Home() {
   }
 
   return (
-    <main className='h-screen flex items-center justify-center'>
+    <main className='h-[100svh] flex justify-center pt-32'>
       <Head>
         <title>Alcuin Scrapper</title>
       </Head>
@@ -52,7 +52,7 @@ export default function Home() {
         <p className="mb-6">Par <strong>Alex Fougeroux</strong> et <strong>Lukas Laudrain</strong>.</p>
 
         <Combobox values={dropdownValues} {...{currentValue, setCurrentValue}} />
-        <Button className="w-[350px]" disabled={currentValue === ''} onClick={onClick}>Copy !</Button>
+        <Button className="w-full" disabled={currentValue === ''} onClick={onClick}>Copy !</Button>
       </div>
     </main>
   )
