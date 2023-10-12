@@ -37,6 +37,6 @@ const FILES = [
   "Majeure_T2E_S7.ics",
 ];
 
-export const BASEPATH = 'https://raw.githubusercontent.com/ctrl-plus-w/alcuin-open-calendar/main';
+export const BASEPATH = 'https://raw.githubusercontent.com/Nexgear75/alcuin-open-calendar/main';
 
 export default FILES;
