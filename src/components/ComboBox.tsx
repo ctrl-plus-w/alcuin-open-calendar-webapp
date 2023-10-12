@@ -56,7 +56,6 @@ export default function Combobox({ placeholder, currentValue, setCurrentValue, v
               <CommandItem
                 key={value.value}
                 onSelect={(_value) => {
-                  console.log(_value);
                   setCurrentValue(_value === currentValue ? "" : _value)
                   setOpen(false)
                 }}
