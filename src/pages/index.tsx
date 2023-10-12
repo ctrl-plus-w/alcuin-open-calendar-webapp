@@ -6,6 +6,8 @@ import { useToast } from '@/components/ui/use-toast';
 
 import CALENDARS, { BASEPATH } from '@/constants/CALENDARS'
 import Head from 'next/head';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const prettifyCalendarName = (name: string) => {
   if(!name.startsWith('23_24')) return name.slice(0, name.length - 4).replaceAll('_', ' ');
@@ -74,6 +76,10 @@ export default function Home() {
         }
 
         <Button className="w-full" disabled={currentValue === ''} onClick={onClick}>Copier 🎉</Button>
+
+        <Link href="/guide" className="flex items-center gap-2 ml-auto">
+          Guides d&apos;installation <ArrowRight strokeWidth={1.5} />
+        </Link>
       </div>
     </main>
   )
