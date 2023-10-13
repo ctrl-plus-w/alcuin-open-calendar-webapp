@@ -1,19 +1,20 @@
 import * as React from 'react';
 
+import Head from 'next/head';
+import Link from 'next/link';
+
+import { ArrowRight } from 'lucide-react';
+
 import Combobox from '@/components/ComboBox';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
-import CALENDARS, { BASEPATH } from '@/constants/CALENDARS'
-import Head from 'next/head';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import CALENDARS, { BASEPATH } from '@/constants/CALENDARS';
 
 const prettifyCalendarName = (name: string) => {
-  if(!name.startsWith('23_24')) return name.slice(0, name.length - 4).replaceAll('_', ' ');
+  if (!name.startsWith('23_24')) return name.slice(0, name.length - 4).replaceAll('_', ' ');
   return name.slice(6, name.length - 4).replaceAll('_', ' ');
-}
-
+};
 
 export default function Home() {
   const { toast } = useToast();
@@ -29,7 +30,7 @@ export default function Home() {
     return Object.keys(CALENDARS).map((value) => ({ value: value.toLocaleLowerCase(), label: value }));
   }, []);
 
-  const dropdownValues = React.useMemo(() => { 
+  const dropdownValues = React.useMemo(() => {
     const category = dropdownCategoriesValues.find(({ value }) => value === currentCategory);
     if (!category) return [];
 
@@ -44,7 +45,7 @@ export default function Home() {
 
   const onClick = () => {
     const calendar = dropdownValues.find(({ value }) => value === currentValue);
-    if(!calendar) return;
+    if (!calendar) return;
 
     const url = `${BASEPATH}/${calendar.calendar}`;
 
@@ -52,35 +53,47 @@ export default function Home() {
       navigator.clipboard.writeText(url);
 
       toast({
-        title: "Copié !",
-        description: "Le lien a été copié, vous pouvez le coller dans votre application de calendrier préféré.",
+        title: 'Copié !',
+        description: 'Le lien a été copié, vous pouvez le coller dans votre application de calendrier préféré.',
       });
-    } catch(err) {
+    } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   return (
-    <main className='h-[100svh] flex justify-center pt-32'>
+    <main className="h-[100svh] flex justify-center pt-32">
       <Head>
         <title>Alcuin Scrapper</title>
       </Head>
 
       <div className="flex flex-col gap-4">
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Calendrier Alcuin</h1>
-        <p className="mb-6">Par <strong>Alex Fougeroux</strong> et <strong>Lukas Laudrain</strong>.</p>
+        <p className="mb-6">
+          Par <strong>Alex Fougeroux</strong> et <strong>Lukas Laudrain</strong>.
+        </p>
 
-        <Combobox values={dropdownCategoriesValues} placeholder="Sélectionner la catégorie" {...{currentValue: currentCategory, setCurrentValue: setCurrentCategory}} />
-        {currentCategory !== '' &&
-          <Combobox values={dropdownValues} placeholder="Sélectionner la filière." {...{currentValue, setCurrentValue}} />
-        }
+        <Combobox
+          values={dropdownCategoriesValues}
+          placeholder="Sélectionner la catégorie"
+          {...{ currentValue: currentCategory, setCurrentValue: setCurrentCategory }}
+        />
+        {currentCategory !== '' && (
+          <Combobox
+            values={dropdownValues}
+            placeholder="Sélectionner la filière."
+            {...{ currentValue, setCurrentValue }}
+          />
+        )}
 
-        <Button className="w-full" disabled={currentValue === ''} onClick={onClick}>Copier 🎉</Button>
+        <Button className="w-full" disabled={currentValue === ''} onClick={onClick}>
+          Copier 🎉
+        </Button>
 
         <Link href="/guide" className="flex items-center gap-2 ml-auto">
           Guides d&apos;installation <ArrowRight strokeWidth={1.5} />
         </Link>
       </div>
     </main>
-  )
+  );
 }

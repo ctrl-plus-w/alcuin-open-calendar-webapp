@@ -1,19 +1,13 @@
 import Head from 'next/head';
-
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
-import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
+import { ArrowLeft } from 'lucide-react';
+
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const GuidePage = () => {
   return (
-    <main className='min-h-[100svh] flex flex-col p-4 gap-2'>
+    <main className="min-h-[100svh] flex flex-col p-4 gap-2">
       <Head>
         <title>Alcuin Scrapper</title>
       </Head>
@@ -28,19 +22,33 @@ const GuidePage = () => {
 
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
-          <AccordionTrigger>Apple Calendar</AccordionTrigger>
+          <AccordionTrigger>Calendrier Apple</AccordionTrigger>
           <AccordionContent>
-            <video src="/apple-guide.mov" controls className="max-w-xs w-full border-4 border-black rounded-xl overflow-hidden" />
+            <video
+              src="/apple-guide.mov"
+              controls
+              className="aspect-[320/682.6] max-w-xs w-full border-4 border-black rounded-xl overflow-hidden"
+            />
           </AccordionContent>
         </AccordionItem>
 
-        {/* <AccordionItem value="item-2">
-          <AccordionTrigger>Google Calendar</AccordionTrigger>
+        <AccordionItem value="item-2">
+          <AccordionTrigger>Calendrier Google (Android)</AccordionTrigger>
           <AccordionContent>
-            Yes. It comes with default styles that matches the other
-            components&apos; aesthetic.
+            <p className="mb-2">
+              Attention ! Si vous avez l&apos;application Calendrier Google installée, lorsque que vous vous rendrez sur
+              la version web, celle-ci peut vous rediriger automatiquement sur l&apos;application. Cependant, il
+              n&apos;est possible d&apos;ajouter un calendrier que depuis la version web. Pour éviter la redirection,
+              vous pouvez vous mettre en navigation privée. Voici le liens vers{' '}
+              <a href="https://calendar.google.com">Google Calendar</a>.
+            </p>
+            <video
+              src="/android-guide.mp4"
+              controls
+              className="aspect-[320/682.6] max-w-xs w-full border-4 border-black rounded-xl overflow-hidden"
+            />
           </AccordionContent>
-        </AccordionItem> */}
+        </AccordionItem>
       </Accordion>
     </main>
   );

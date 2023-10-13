@@ -1,12 +1,14 @@
-import '@/styles/globals.css'
+import type { AppProps } from 'next/app';
 
-import type { AppProps } from 'next/app'
+import '@/styles/globals.css';
 
-import { Toaster } from '@/components/ui/toaster'
+import { Toaster } from '@/components/ui/toaster';
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <>
-    <Toaster />
-    <Component {...pageProps} />
-  </>
+  return (
+    <>
+      <Toaster />
+      <Component {...pageProps} />
+    </>
+  );
 }
