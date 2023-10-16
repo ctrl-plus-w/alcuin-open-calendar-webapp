@@ -31,7 +31,6 @@ const GuidePage = () => {
             />
           </AccordionContent>
         </AccordionItem>
-
         <AccordionItem value="item-2">
           <AccordionTrigger>Calendrier Google (Android)</AccordionTrigger>
           <AccordionContent>
@@ -40,13 +39,26 @@ const GuidePage = () => {
               la version web, celle-ci peut vous rediriger automatiquement sur l&apos;application. Cependant, il
               n&apos;est possible d&apos;ajouter un calendrier que depuis la version web. Pour éviter la redirection,
               vous pouvez vous mettre en navigation privée. Voici le liens vers{' '}
-              <a href="https://calendar.google.com">Google Calendar</a>.
+              <a href="https://calendar.google.com" className="underline text-blue-600">
+                Google Calendar
+              </a>
+              .
             </p>
             <video
               src="/android-guide.mp4"
               controls
               className="aspect-[320/682.6] max-w-xs w-full border-4 border-black rounded-xl overflow-hidden"
             />
+          </AccordionContent>
+        </AccordionItem>
+
+        <AccordionItem value="item-3">
+          <AccordionTrigger>Calendrier Samsung</AccordionTrigger>
+          <AccordionContent>
+            <p>
+              Afin d&apos;utiliser le calendrier alcuin sur le calendrier Samsung, il suffit de suivre le tutoriel n°2
+              (Calendrier Google) et d&apos;utiliser la même addresse sur son compte Samsung et sur son compte Google.
+            </p>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
